@@ -6,7 +6,7 @@
   "author": "Igor <spirit-drive@yandex.ru>",
   "scripts": {
     "start": "webpack serve --mode development",
-    "deploy": "npx gh-pages -d dist -e project-name",
+    "deploy": "npx gh-pages -d dist -e .",
     "build": "webpack --mode production",
     "test": "jest src",
     "lint": "eslint src --fix",
