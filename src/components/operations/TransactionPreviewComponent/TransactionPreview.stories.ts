@@ -8,11 +8,20 @@ const meta: Meta<typeof TransactionPreview> = {
 
 export default meta;
 
-export const Primary = {
+export const LongDescription = {
     args:{        
         title: "Перевод на другой счет",
         amount: "100р",
         category: "Перевод",
-        description: "Описание операции"    
+        description: "Динное описание, которое будет обрезано"    
+    }
+}
+
+export const SmallDescription = {
+    args:{
+        title: "Перевод на другой счет",
+        amount: "100р",
+        category: "Перевод",
+        description: "Короткое описание"
     }
 }

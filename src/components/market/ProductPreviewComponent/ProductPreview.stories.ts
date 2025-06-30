@@ -12,7 +12,7 @@ export const NoCounter = {
         args: {
         name:"Мороженое",
         categoryName:"Еда",
-        description:"Краткое описание",
+        description:"Описание",
         image:"",
         price:200,
         counter:0
@@ -23,7 +23,18 @@ export const WithCounter = {
         args: {
         name:"Мороженое",
         categoryName:"Еда",
-        description:"Краткое описание",
+        description:"Описание",
+        image:"",
+        price:200,
+        counter:10
+    }
+}
+
+export const LongDescription = {
+    args: {
+        name:"Мороженое",
+        categoryName:"Еда",
+        description:"Длинное описание, которое будет обрезано",
         image:"",
         price:200,
         counter:10
