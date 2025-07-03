@@ -4,8 +4,6 @@ import { OperationFull } from './OperationFull';
 const meta: Meta<typeof OperationFull> = {
     title: "market/OperationFull",
     component: OperationFull,
-
-
 }
 
 export default meta;

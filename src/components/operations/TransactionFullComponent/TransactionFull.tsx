@@ -9,15 +9,15 @@ export interface TransactionFullProps {
     description: string
 }
 
-export const TransactionFull: React.FC<TransactionFullProps>=(props)=>{
+export const TransactionFull: React.FC<TransactionFullProps>=({amount,category,date,description,title})=>{
     return(
         <>
             <div className="full-div">
-                <h2>{props.title}</h2>
-                <p>Дата: {props.date}</p>
-                <p>Сумма операции: {props.amount}</p>
-                <p>Категория: {props.category}</p>
-                <p>{props.description}</p>
+                <h2>{title}</h2>
+                <p>Дата: {date}</p>
+                <p>Сумма операции: {amount}</p>
+                <p>Категория: {category}</p>
+                <p>{description}</p>
                 <div className="full-div-button">
                     <button type="button">Редактировать</button>
                 </div>

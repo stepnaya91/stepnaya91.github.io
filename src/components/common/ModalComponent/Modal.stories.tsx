@@ -12,8 +12,6 @@ const meta: Meta<typeof Modal> = {
 
 export default meta;
 
-
-
 export const WithP = {
     args:{
         visible: true,
@@ -31,6 +29,11 @@ export const WithButton = {
     args:{
         visible: true,
         children:<div><button type="button">Кнопка</button></div>
+    }
+}
+export const Unvisible = {
+    args:{
+        visible: false
     }
 }
 

@@ -7,8 +7,8 @@ export interface ModalProps {
     children: ReactNode,
 }
 
-export const Modal: React.FC <ModalProps> = (props) => {
-    if (!props.visible) return null
+export const Modal: React.FC <ModalProps> = ({children, visible}) => {
+    if (!visible) return null
     return(
         <>
             <div className='modal'>
@@ -20,7 +20,7 @@ export const Modal: React.FC <ModalProps> = (props) => {
                         </span>
                     </div>
                     <div className='modal-body'>
-                        <div className='modal-content'>{props.children}</div>
+                        <div className='modal-content'>{children}</div>
                     </div>
                     <div className='modal-footer'>
                         <button type="button">Закрыть</button>
