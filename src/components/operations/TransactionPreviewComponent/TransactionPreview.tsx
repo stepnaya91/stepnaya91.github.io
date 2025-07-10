@@ -10,14 +10,13 @@ export interface TransactionPreviewProps {
 }
 
 
-export const TransactionPreview: React.FC<TransactionPreviewProps> = (props) => {
-    const description = props.description;
+export const TransactionPreview: React.FC<TransactionPreviewProps> = ({amount,category,description,title}) => {
     const descSmall = description.length>20?description.substring(0,20)+"...":description;
     return(
         <div className="transaction-preview-div">
-            <h2>{props.title}</h2>
-            <p>Сумма операции: {props.amount}</p>
-            <p>Категория: {props.category}</p>
+            <h2>{title}</h2>
+            <p>Сумма операции: {amount}</p>
+            <p>Категория: {category}</p>
             <p>{descSmall}</p>
         </div>
     )

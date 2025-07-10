@@ -7,17 +7,16 @@ export interface ProductPreviewProps extends Product{
     counter: number
 }
 
-export const ProductPreview: React.FC<ProductPreviewProps> = (props) => {
-    const description = props.description;
+export const ProductPreview: React.FC<ProductPreviewProps> = ({name, counter,price,description,image}) => {
     const descSmall = description.length>20?description.substring(0,20)+"...":description;
     return(
         <>
             <div className="preview-div">
-                <h2>{props.name}</h2>
-                <p>Price: {props.price}</p>
-                <p>{props.image}</p>
+                <h2>{name}</h2>
+                <p>Price: {price}</p>
+                <p>{image}</p>
                 <p>{descSmall}</p>
-                <BasketButton counter={props.counter}/>
+                <BasketButton counter={counter}/>
             </div>
         </>
     )

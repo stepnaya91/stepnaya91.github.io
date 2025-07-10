@@ -2,7 +2,6 @@ import type { Meta } from '@storybook/react';
 import { BasketButton, BasketButtonProps } from './BasketButton';
 
 const meta: Meta<typeof BasketButton> = {
-    // render: (args: BasketButtonProps) => <BasketButton {...args}/>,
     title: "market/BasketButton",
     component: BasketButton,
     args: {
