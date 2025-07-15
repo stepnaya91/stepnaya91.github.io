@@ -7,7 +7,6 @@ export const ToggleTheme: React.FC = () => {
     const {theme, toggleTheme}  = useTheme(); 
     const {t} = useLanguage();
     const className = "button-"+theme;
-    const h1ClName = "h1-"+theme;
     return(
         <>
             <button className={className} onClick={toggleTheme}>{t('changeTheme')}</button>

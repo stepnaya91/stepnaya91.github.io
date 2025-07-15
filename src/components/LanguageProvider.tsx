@@ -9,7 +9,7 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType>({
     language: "ru",
-    changeLanguage: () => { },
+    changeLanguage: () => {/*Do nothing*/},
     t: (key: string) => key,
 })
 

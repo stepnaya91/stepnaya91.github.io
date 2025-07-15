@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react';
 import { FillInputModal } from './FillInputModal';
 
 const meta: Meta<typeof FillInputModal> = {
-    title: "market/FillInputModal",
+    title: "components/FillInputModal",
     component: FillInputModal,
 }
 

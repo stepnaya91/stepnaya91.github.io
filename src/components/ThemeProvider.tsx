@@ -9,7 +9,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType>({
     theme: "light",
-    toggleTheme: () => {}
+    toggleTheme: () => {/*Do nothing*/}
 })
 
 type ThemeProviderProps = {

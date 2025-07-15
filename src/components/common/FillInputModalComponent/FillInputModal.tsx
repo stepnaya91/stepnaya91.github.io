@@ -21,7 +21,7 @@ export const FillInputModal: React.FC  = ()=>{
 
     return(
         <>
-            <Modal visible={visible} children={childrenNode}/>
+            <Modal visible={visible}>{childrenNode}</Modal>
             <input onChange={(e)=>ChangeInput(e.target.value)} value={text}></input>
             <button onClick={ShowModal} type="button">Показать текст</button>
         </>
