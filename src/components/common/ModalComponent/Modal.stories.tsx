@@ -1,5 +1,5 @@
-import type { Story,Meta } from '@storybook/react';
-import { Modal, ModalProps } from './Modal';
+import type { Meta } from '@storybook/react';
+import { Modal } from './Modal';
 import React from 'react';
 
 const meta: Meta<typeof Modal> = {

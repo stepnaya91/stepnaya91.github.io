@@ -1,13 +1,61 @@
+@import "Variables.scss";
+
 button{
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
-    border: 0;
-    border-radius: 1em;
+    border: 0.01em solid black;
     cursor: pointer;
     display: inline-block;
     line-height: 1;
     color: black;
-    background-color: #fcd800;
+    background-color: $yellow;
     font-size: 12px;
     padding: 10px 16px;
+}
+.button-light, .button-dark{
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+    font-size: 12px;
+    padding: 10px 16px;
+}
+.button-light{
+    border: 0.01em solid black;
+    color: black;
+    background-color: $yellow;
+}
+.button-dark{
+    border: 0.01em solid $brown;
+    color: white;
+    background-color: $darkColor;
+}
+
+.select-light, .select-dark{
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+    font-size: 12px;
+    padding: 7.2px 10px;
+}
+
+.select-light{
+    border: 0.01em solid black;
+    color: black;
+    background-color: $yellow;;
+}
+.select-dark{
+    border: 0.01em solid $brown;
+    color: white;
+    background-color: $darkColor;
+}
+
+.h1-light, .p-light {
+    color: black
+}
+.h1-dark, .p-dark {
+    color: white
 }

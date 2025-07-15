@@ -2,7 +2,8 @@ name: Test, Lint, Build and Deploy on Github Pages
 
 on:
   push:
-    branches: ["master", "main"]
+    branches: 
+      - storybook
 
   # Позволяет запустить этот рабочий процесс вручную на вкладке Actions
   workflow_dispatch:
@@ -34,7 +35,7 @@ jobs:
       - name: Run tests and linter
         run: npm run lint && npm test
 
-      # Собираем приложение
+      # # Собираем приложение
       # - name: Build Application
       #   run: npm run build
 
@@ -48,7 +49,7 @@ jobs:
       # Собираем Storybook
       - name: Build Storybook
         run: npm run build-storybook
-
+      
       # Публикуем Storybook на Github Pages
       - name: Deploy Storybook to Github Pages
         uses: JamesIves/github-pages-deploy-action@4.2.1
