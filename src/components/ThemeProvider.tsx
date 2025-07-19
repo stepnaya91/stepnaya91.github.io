@@ -1,23 +1,24 @@
 import React, { createContext, ReactNode, useContext, useState } from "react"
 
-type Theme = "light"|"dark"
+type Theme = "light"|"dark";
 
 interface ThemeContextType {
     theme: Theme;
     toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextType>({
-    theme: "light",
-    toggleTheme: () => {/*Do nothing*/}
-})
+const ThemeContext = createContext<ThemeContextType|null>(null);
 
 type ThemeProviderProps = {
     children: ReactNode
 }
 
 export const useTheme = () => {
-    return useContext(ThemeContext);
+    const context = useContext(ThemeContext);
+
+    if(context === null) { throw new Error("useTheme must be used within a ThemeProvider"); }
+
+    return context;
 }
 
 export const ThemeProvider = ({children}: ThemeProviderProps) => {

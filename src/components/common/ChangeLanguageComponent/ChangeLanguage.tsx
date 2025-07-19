@@ -20,7 +20,7 @@ export const ChangeLanguage: React.FC = () => {
     <div>
       <select className={className} value={selectedValue} onChange={handleChange}>
         <option value="ru">Русский</option>
-        <option value="en">Английский</option>
+        <option value="en">English</option>
       </select>
     </div>
   );

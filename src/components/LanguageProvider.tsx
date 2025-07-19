@@ -4,21 +4,21 @@ import React, { createContext, ReactNode, useContext, useState } from "react"
 interface LanguageContextType {
     language: string;
     changeLanguage: (lang: string) => void;
-    t: (key: string, options?: any) => string;
+    t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType>({
-    language: "ru",
-    changeLanguage: () => {/*Do nothing*/},
-    t: (key: string) => key,
-})
+const LanguageContext = createContext<LanguageContextType | null>(null);
 
 type LanguageProviderProps = {
     children: ReactNode
 }
 
 export const useLanguage = () => {
-    return useContext(LanguageContext);
+    const context = useContext(LanguageContext);
+    
+    if(context === null) { throw new Error("useLanguage must be used within a LanguageProvider"); }
+
+    return context;
 }
 
 export const LanguageProvider = ({children}: LanguageProviderProps) => {
