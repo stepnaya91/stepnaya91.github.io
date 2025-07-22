@@ -1,4 +1,11 @@
-.layout-div{
+@import "../../../app/Variables.scss";
+
+.layout-div-light{
     height:100em;
-    background-color: #ffe86f;
+    background-color: #FFF5BF;
+}
+
+.layout-div-dark{
+    height:100em;
+    background-color: $brown;
 }
