@@ -9,9 +9,7 @@ import "./Header.scss"
 export const Header: React.FC = () => {
     const {theme} = useTheme();
     const {language} = useLanguage();
-
     const className="header-div-"+theme;
-    console.log(language);
     return(        
         <div className={className}>
             <div className="header-div-logo">
@@ -19,10 +17,10 @@ export const Header: React.FC = () => {
             </div>
             <div className="header-div-right">
                 <div>
-                <ToggleTheme/>
+                    <ToggleTheme/>
                 </div>
                 <div>
-                <ChangeLanguage/>
+                    <ChangeLanguage/>
                 </div>
             </div>
         </div>
