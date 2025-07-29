@@ -8,7 +8,7 @@ export interface ProductPreviewProps extends Product{
 }
 
 export const ProductPreview: React.FC<ProductPreviewProps> = ({name, counter,price,description,image}) => {
-    const descSmall = description.length>20?description.substring(0,20)+"...":description;
+    const descSmall = description&&description.length>20?description.substring(0,20)+"...":description;
     return(
         <>
             <div className="preview-div">
