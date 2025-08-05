@@ -1,5 +1,6 @@
 import React from "react"
 import "./TransactionFull.scss"
+import { Button } from "../../common/Button/Button"
 
 export interface TransactionFullProps {
     title: string,
@@ -19,7 +20,7 @@ export const TransactionFull: React.FC<TransactionFullProps>=({amount,category,d
                 <p>Категория: {category}</p>
                 <p>{description}</p>
                 <div className="full-div-button">
-                    <button type="button">Редактировать</button>
+                    <Button label="Редактировать"/>
                 </div>
             </div>
         </>

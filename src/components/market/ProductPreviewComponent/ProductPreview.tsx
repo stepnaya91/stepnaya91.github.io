@@ -1,5 +1,5 @@
 import React from "react"
-import { BasketButton } from "../BasketButtonComponent/BasketButton"
+import { BasketButton } from "../BasketButton/BasketButton"
 import { Product } from "../../ProductType"
 import "./ProductPreview.scss"
 

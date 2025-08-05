@@ -1,12 +1,12 @@
 import type { Meta } from '@storybook/react';
-import { ProductList } from './ProductList';
+import { ProductListLazyLoad } from './ProductListLazyLoad';
 import { Product } from "../../ProductType"
 import { getRandomProductList } from '../../ProductCreator';
 
 
-const meta: Meta<typeof ProductList> = {
-    title: "market/ProductListWithLazyLoad",
-    component: ProductList,
+const meta: Meta<typeof ProductListLazyLoad> = {
+    title: "market/ProductListLazyLoad",
+    component: ProductListLazyLoad,
     argTypes:{
         products:{control: 'object'}
     }

@@ -2,6 +2,7 @@ import React from "react"
 import { ProductPreview } from "../ProductPreviewComponent/ProductPreview"
 import { Product } from "../../ProductType"
 import "./ProductBasket.scss"
+import { Button } from "../../common/Button/Button"
 
 export interface ProductBasketProps extends Product {
     counter: number
@@ -20,7 +21,7 @@ export const ProductBasket: React.FC<ProductBasketProps> = ({name, categoryName,
                     counter={counter}
                     />
                 <div className="delete-button-div">
-                    <button className="delete-button" type="button">Удалить</button>
+                    <Button className="delete-button" label="Удалить"/>
                 </div>
             </div>
         </>
