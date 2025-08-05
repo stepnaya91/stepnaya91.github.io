@@ -8,8 +8,8 @@ interface ProductProps{
     products: Product[]
 }
 
-function withAddButton (ProductListComponent: React.FC<ProductProps>) { 
-    ({products}:ProductProps) =>  {
+function withAddButton (ProductListComponent: React.FC<ProductProps>) {
+    return function AddButtonComponent({products}:ProductProps) {
         const [items, setItems] = useState<Product[]>(products);
         const [nextId, setNextId] = useState<number>(products.length);    
 
@@ -27,4 +27,5 @@ function withAddButton (ProductListComponent: React.FC<ProductProps>) {
         )
     }
 }
+
 export const ProductListAddButton = withAddButton(ProductList)

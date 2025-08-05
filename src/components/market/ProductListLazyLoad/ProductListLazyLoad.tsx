@@ -8,8 +8,8 @@ interface ProductProps{
     products: Product[]
 }
 
-function withLazyLoad(ProductListComponent: React.FC<ProductProps>) {
-    ({products}:ProductProps) =>  {
+function withLazyLoad(ProductListComponent: React.FC<ProductProps>){
+        return function LazyLoadComponent({products}:ProductProps) {
         const [items, setItems] = useState<Product[]>(products);
         const [nextId, setNextId] = useState<number>(products.length);    
 
