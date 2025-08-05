@@ -8,23 +8,24 @@ interface ProductProps{
     products: Product[]
 }
 
-const withLazyLoad = (ProductListComponent: React.FC<ProductProps>) => ({products}:ProductProps) =>  {
-    const [items, setItems] = useState<Product[]>(products);
-    const [nextId, setNextId] = useState<number>(products.length);    
+function withLazyLoad(ProductListComponent: React.FC<ProductProps>) {
+    ({products}:ProductProps) =>  {
+        const [items, setItems] = useState<Product[]>(products);
+        const [nextId, setNextId] = useState<number>(products.length);    
 
-    const addItem = useCallback(()=>{
-        const newItem = getRandomProduct();
-        setItems([...items,newItem]);
-        setNextId(nextId+1);
-    },[items, nextId])
+        const addItem = useCallback(()=>{
+            const newItem = getRandomProduct();
+            setItems([...items,newItem]);
+            setNextId(nextId+1);
+        },[items, nextId])
 
-    return(
-        <>
-            <ProductListComponent products={items}/>
-            <LazyLoad changeObject={nextId} callback={addItem}/>
-        </>
-    )
+        return(
+            <>
+                <ProductListComponent products={items}/>
+                <LazyLoad changeObject={nextId} callback={addItem}/>
+            </>
+        )
+    }
 }
-
 
 export const ProductListLazyLoad = withLazyLoad(ProductList)
