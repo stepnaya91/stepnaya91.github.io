@@ -8,22 +8,23 @@ interface ProductProps{
     products: Product[]
 }
 
-const withAddButton = (ProductListComponent: React.FC<ProductProps>) => ({products}:ProductProps) =>  {
-    const [items, setItems] = useState<Product[]>(products);
-    const [nextId, setNextId] = useState<number>(products.length);    
+function withAddButton (ProductListComponent: React.FC<ProductProps>) { 
+    ({products}:ProductProps) =>  {
+        const [items, setItems] = useState<Product[]>(products);
+        const [nextId, setNextId] = useState<number>(products.length);    
 
-    const addItem = ()=>{
-        const newItem = getRandomProduct();
-        setItems([...items,newItem]);
-        setNextId(nextId+1);
+        const addItem = ()=>{
+            const newItem = getRandomProduct();
+            setItems([...items,newItem]);
+            setNextId(nextId+1);
+        }
+
+        return(
+            <>
+                <ProductListComponent products={items}/>
+                <Button onClick={addItem} label="Показать еще"/> 
+            </>
+        )
     }
-
-    return(
-        <>
-            <ProductListComponent products={items}/>
-            <Button onClick={addItem} label="Показать еще"/> 
-        </>
-    )
 }
-
 export const ProductListAddButton = withAddButton(ProductList)
