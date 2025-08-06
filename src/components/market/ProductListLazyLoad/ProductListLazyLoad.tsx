@@ -9,15 +9,15 @@ interface ProductProps{
 }
 
 function withLazyLoad(ProductListComponent: React.FC<ProductProps>){
-        return function LazyLoadComponent({products}:ProductProps) {
+    return function LazyLoadComponent({products}:ProductProps) {
         const [items, setItems] = useState<Product[]>(products);
         const [nextId, setNextId] = useState<number>(products.length);    
 
-        const addItem = useCallback(()=>{
+        const addItem = ()=>{
             const newItem = getRandomProduct();
             setItems([...items,newItem]);
             setNextId(nextId+1);
-        },[items, nextId])
+        }
 
         return(
             <>
