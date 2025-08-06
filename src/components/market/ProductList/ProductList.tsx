@@ -7,7 +7,7 @@ export interface ProductListProps {
     products: Product[]
 }
 
-export const ProductList: React.FC<ProductListProps>= memo(({products}) => {
+export const ProductList: React.FC<ProductListProps>= ({products}) => {
     const productItems = useMemo(() => products.map((product)=>(
         <ProductBasket key={product.id}  counter={0} name={product.name} price={product.price} categoryName={product.categoryName} description={product.description}/>
     )),[products])
@@ -19,4 +19,6 @@ export const ProductList: React.FC<ProductListProps>= memo(({products}) => {
             </ul>          
         </>
     )
-})   
+}
+
+export default memo(ProductList)

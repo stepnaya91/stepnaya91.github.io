@@ -7,13 +7,14 @@ export interface BasketButtonProps {
     counter: number
 }
 
-export const BasketButton: React.FC<BasketButtonProps> = memo(({counter}) => {
+export const BasketButton: React.FC<BasketButtonProps> = ({counter}) => {
     if (counter===0) {
         return (
             <div className="basket-add-button-div">
                 <Button label="В корзину"/>
             </div>
         )
+
     }
     return (
         <div className="basket-buttons">
@@ -22,4 +23,6 @@ export const BasketButton: React.FC<BasketButtonProps> = memo(({counter}) => {
             <Button className="basket-button" label="+"/>
         </div>
     )
-})
+}
+
+export default memo(BasketButton);
