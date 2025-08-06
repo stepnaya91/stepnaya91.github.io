@@ -1,6 +1,7 @@
 import "../../../app/App.scss"
 import React, { useState } from "react"
-import { Modal } from "../ModalComponent/Modal"
+import { Modal } from "../Modal/Modal"
+import { Button } from "../Button/Button";
 
 
 
@@ -12,7 +13,7 @@ export const FillInputModal: React.FC  = ()=>{
         <>
             <Modal visible={visible}><input value={text}></input></Modal>
             <input onChange={(e)=>{setText(e.target.value)}} value={text}></input>
-            <button onClick={()=>setVisible(true)} type="button">Показать текст</button>
+            <Button onClick={()=>setVisible(true)} label="Показать текст"/>
         </>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import { getObserver } from "./IntersectionObserver";
+import "./LazyLoad.scss"
 
 interface LazyLoadProps{
     changeObject: number,
@@ -19,10 +20,9 @@ export const LazyLoad: React.FC<LazyLoadProps> = ({changeObject, callback}) => {
         return () => {
             observer.disconnect();
         };
-    }, [changeObject]);
+    }, [changeObject, callback]);
     return(
-        <div ref={loaderRef} className="intersection-div">
-        </div>      
+        <div ref={loaderRef} className="intersection-div"/>
     )
 
 }

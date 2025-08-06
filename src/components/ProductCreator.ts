@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 const categories : string[] = ["fruits", "vegetables", "clothes", "shoes"];
 const CNT_CATEGORIES = 4;
-const CNT_PRODUCTS = 12;
 
 export type Product = {
     id: string,

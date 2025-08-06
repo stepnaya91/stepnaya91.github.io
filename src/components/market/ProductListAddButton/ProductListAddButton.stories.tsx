@@ -1,11 +1,11 @@
 import type { Meta } from '@storybook/react';
-import { ProductList } from './ProductList';
+import { ProductListAddButton } from './ProductListAddButton';
 import { Product } from "../../ProductType"
 import { getRandomProductList } from '../../ProductCreator';
 
-const meta: Meta<typeof ProductList> = {
-    title: "market/ProductList",
-    component: ProductList,
+const meta: Meta<typeof ProductListAddButton> = {
+    title: "market/ProductListAddButton",
+    component: ProductListAddButton,
     argTypes:{
         products:{control: 'object'}
     }

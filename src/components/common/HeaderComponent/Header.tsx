@@ -1,14 +1,12 @@
 import React from "react"
 import { Logo } from "../Logo"
-import { ToggleTheme } from "../ToggleThemeComponent/ToggleTheme";
+import { ToggleTheme } from "../ToggleTheme/ToggleTheme";
 import { useTheme } from "../../ThemeProvider";
 import { ChangeLanguage } from "../ChangeLanguageComponent/ChangeLanguage";
-import { useLanguage } from "../../LanguageProvider";
 import "./Header.scss"
 
 export const Header: React.FC = () => {
     const {theme} = useTheme();
-    const {language} = useLanguage();
     const className="header-div-"+theme;
     return(        
         <div className={className}>

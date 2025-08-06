@@ -1,7 +1,8 @@
-import React, { ReactNode, useState } from "react"
+import React, { ReactNode } from "react"
 import "./Modal.scss"
 import "../../../app/App.scss"
 import { createPortal } from "react-dom"
+import { Button } from "../Button/Button";
 
 export interface ModalProps {
     visible: boolean,
@@ -25,7 +26,7 @@ export const Modal: React.FC <ModalProps> = ({children, visible}) => {
                         <div className='modal-content'>{children}</div>
                     </div>
                     <div className='modal-footer'>
-                        <button type="button">Закрыть</button>
+                        <Button label={"Закрыть"}/>
                     </div>
                 </div>
             </div>,document.body)}
