@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react"
+import React, { useState } from "react"
 import { Product } from "../../ProductCreator"
 import { getRandomProduct } from "../../ProductCreator"
 import { LazyLoad } from "../LazyLoad/LazyLoad"
@@ -20,10 +20,10 @@ function withLazyLoad(ProductListComponent: React.FC<ProductProps>){
         }
 
         return(
-            <>
+            <div>
                 <ProductListComponent products={items}/>
                 <LazyLoad changeObject={nextId} callback={addItem}/>
-            </>
+            </div>
         )
     }
 }

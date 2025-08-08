@@ -1,5 +1,5 @@
 import React from "react"
-import { ProductPreview } from "../ProductPreviewComponent/ProductPreview"
+import { ProductPreview } from "../ProductPreview/ProductPreview"
 import { Product } from "../../ProductType"
 import "./ProductBasket.scss"
 import { Button } from "../../common/Button/Button"

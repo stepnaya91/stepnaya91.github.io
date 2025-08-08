@@ -3,8 +3,17 @@
     justify-content: flex-end;
     padding-right: 0.75em;
 }
-.basket-button{
-    border-radius: 0.5em;
+.basket-buttons{
+  display: flex;
+}
+.basket-button-left{
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding: 8px 14px;
+}
+.basket-button-right{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     padding: 8px 14px;
 }
 .basket-input{
@@ -19,6 +28,5 @@
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #bdbdbd;
-  border-radius: 0.25rem;
   padding-bottom: 2px;
 }

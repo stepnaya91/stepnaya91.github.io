@@ -1,8 +1,10 @@
 .productBasket-div{
     width: 200px;
-    border: solid 0.1em black;
-    padding: 0.5em;
+    padding: 16px;
     margin: 0.5em;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 1px 3px 20px 0 rgba(110, 110, 110, 0.3);
 }
 .delete-button-div{
     padding-top: 0.5em;

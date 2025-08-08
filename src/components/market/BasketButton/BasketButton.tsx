@@ -18,9 +18,9 @@ export const BasketButton: React.FC<BasketButtonProps> = ({counter}) => {
     }
     return (
         <div className="basket-buttons">
-            <Button className="basket-button" label="-"/>
+            <Button className="basket-button-left" label="-"/>
             <input className="basket-input" value={counter}></input>
-            <Button className="basket-button" label="+"/>
+            <Button className="basket-button-right" label="+"/>
         </div>
     )
 }
