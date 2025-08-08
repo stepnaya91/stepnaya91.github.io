@@ -12,12 +12,12 @@ export const ProductList: React.FC<ProductListProps>= ({products}) => {
         <ProductBasket key={product.id}  counter={0} name={product.name} price={product.price} categoryName={product.categoryName} description={product.description}/>
     )),[products])
     return (
-        <>
+        <div>
             <h1>Список товаров</h1>
             <ul className="product-list-ul">
                 {productItems}
             </ul>          
-        </>
+        </div>
     )
 }
 

@@ -34,7 +34,7 @@ export const LongDescription = {
     args: {
         name:"Мороженое",
         categoryName:"Еда",
-        description:"Длинное описание, которое будет обрезано",
+        description:"Длинное описание, которое будет обрезано Длинное описание, которое будет обрезано",
         image:"",
         price:200,
         counter:10
