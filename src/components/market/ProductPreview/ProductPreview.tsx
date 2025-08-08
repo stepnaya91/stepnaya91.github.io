@@ -15,7 +15,7 @@ export const ProductPreview: React.FC<ProductPreviewProps> = ({name, counter,pri
                 <h2>{name}</h2>
                 <p>Price: {price}</p>
                 <p>{image}</p>
-                <p><CroppedText children={description} opened={false} className="preview-description" /></p>
+                <p><CroppedText childrenText={description} opened={false} className="preview-description" /></p>
                 <BasketButton counter={counter}/>
             </div>
         </>

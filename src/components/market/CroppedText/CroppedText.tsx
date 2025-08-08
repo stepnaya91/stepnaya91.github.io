@@ -5,14 +5,14 @@ import s from './CroppedText.module.sass';
 
 export type CroppedTextProps = {
   className?: string;
-  children: string;
+  childrenText: string;
   opened: boolean;
   rows?: number;
 };
 
 const INITIAL_VALUE = 'I';
 
-export const CroppedText: FC<CroppedTextProps> = ({ className, children, opened, rows = 3 }) => {
+export const CroppedText: FC<CroppedTextProps> = ({ className, childrenText, opened, rows = 3 }) => {
   const [text, setText] = useState<string>(INITIAL_VALUE);
 
   const min = useRef<number>(0);
@@ -33,9 +33,9 @@ export const CroppedText: FC<CroppedTextProps> = ({ className, children, opened,
 
   useLayoutEffect(() => {
     lineHeight.current = lineHeight.current ?? root.current.getBoundingClientRect()?.height;
-    items.current = children?.split(' ') || [];
+    items.current = childrenText?.split(' ') || [];
     reset();
-  }, [reset, children]);
+  }, [reset, childrenText]);
 
   useLayoutEffect(() => {
     let timeout: number;
@@ -94,11 +94,11 @@ export const CroppedText: FC<CroppedTextProps> = ({ className, children, opened,
       mid.current = Math.round((min.current + max.current) / 2);
       setText(getNewText(mid.current));
     });
-  }, [reset, text, children]);
+  }, [reset, text, childrenText]);
 
   return (
     <div ref={root} className={cn(s.root, className)}>
-      {opened ? children : text}
+      {opened ? childrenText : text}
     </div>
   );
 };
