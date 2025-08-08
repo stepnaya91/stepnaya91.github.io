@@ -1,0 +1,24 @@
+@import "../../../app/Variables.scss";
+
+.header-div-light, .header-div-dark{
+    padding: 0.5em;
+    position: sticky;
+    display: flex;
+    justify-content: flex-end;
+    top:0;
+}
+.header-div-light{    
+    border-bottom: 1px solid $grey;
+    background-color: $yellow;
+}
+.header-div-dark{
+    border-bottom: 1px solid $brown;
+    background-color: $darkColor;
+}
+.header-div-logo{
+    flex-grow: 1;
+}
+.header-div-right{
+    display: flex;
+    align-items: flex-start;
+}
