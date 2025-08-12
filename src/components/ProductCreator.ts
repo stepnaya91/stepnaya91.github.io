@@ -26,7 +26,7 @@ export const getRandomProduct = (): Product => {
     return {
         id: uuidv4(),
         name: `SomeProduct${getRandomInt(1,100)}`,
-        description: "descr",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at, dolore earum enim est eveniet facilis illo impedit in, itaque maxime necessitatibus nesciunt nihil non officiis placeat provident quasi reiciendis.",
         price: getRandomInt(10,5000),
         categoryName: getRandomCategory()
     }
