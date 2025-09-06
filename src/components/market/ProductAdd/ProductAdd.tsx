@@ -59,7 +59,7 @@ export const ProductAdd: React.FC = () => {
                 })}
             >
                 <option value="">Выберите категорию..</option>
-                {categories.map((category)=>(<option value={category}>{category}</option>))}
+                {categories.map((category)=>(<option key={category} value={category}>{category}</option>))}
             </select>
             {errors.categoryName && <p className="error">{errors.categoryName.message}</p>}
 

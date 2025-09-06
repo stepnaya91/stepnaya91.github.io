@@ -21,7 +21,6 @@ const meta: Meta<typeof CroppedText> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {
