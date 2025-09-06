@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../../app/App.scss";
+import "../../../app/App.css";
 import { useTheme } from "../../ThemeProvider";
 import { useLanguage } from "../../LanguageProvider";
 
