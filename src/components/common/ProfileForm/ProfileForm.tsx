@@ -1,24 +1,35 @@
 
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import clsx from 'clsx';
 import React from 'react';
+import { z } from 'zod';
 
 
-type FormValues = {
-  name: string;
-  email: string;
-  message: string;
-  preference: string;
-};
+const formSchema = z
+  .object({
+    name: z.string()
+      .min(2, { message: 'Min Value 2' })
+      .max(50, 'Max Value 50'),
+    email: z.email('Wrong email format'),
+    message: z.string()
+        .min(10, { message: 'Message must be at least 10 characters' })
+        .max(500, 'Message must be less than 500 characters'), 
+    preference: z.enum(['newsletters', 'updates', 'offers' ], {
+        message: 'Please select one option'
+    })
+  })
+
+type FormData = z.infer<typeof formSchema>;
 
 export const ProfileForm: React.FC = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<FormValues>();
+    } = useForm<FormData>({ resolver: zodResolver(formSchema) });
 
-    const onSubmit = (data: FormValues) => {
+    const onSubmit: SubmitHandler<FormData> = (data: FormData) => {
         console.log('Form submitted:', data);
     };
 
@@ -33,17 +44,7 @@ export const ProfileForm: React.FC = () => {
             type="text"
             placeholder="Enter your name"
             className={clsx({ 'input-error': errors.name })}
-            {...register('name',{
-            required: 'Name is required',
-            minLength: {
-                value: 2,
-                message: "Min Value 2"
-            },
-            maxLength: {
-                value: 50,
-                message: "Max Value 50"
-            }
-            })}
+            {...register('name')}
         />
         {errors.name && <p className="error">{errors.name.message}</p>}
 
@@ -53,9 +54,7 @@ export const ProfileForm: React.FC = () => {
             id="email"
             className={clsx({ 'input-error': errors.email })}
             placeholder="Enter your email"
-            {...register('email',
-            { required: 'Email is required' }
-            )}
+            {...register('email')}
         />
         {errors.email && <p className="error">{errors.email.message}</p>}
 
@@ -64,17 +63,7 @@ export const ProfileForm: React.FC = () => {
             id="message"
             className={clsx({ 'input-error': errors.message })}
             placeholder="Enter your message"
-            {...register('message',{
-            required: 'Message is required',
-            minLength: {
-                value: 10,
-                message: 'Message must be at least 10 characters',
-            },
-            maxLength: {
-                value: 500,
-                message: 'Message must be less than 500 characters',
-            },
-            })}
+            {...register('message')}
         />
         {errors.message && <p className="error">{errors.message.message}</p>}
 
@@ -86,9 +75,8 @@ export const ProfileForm: React.FC = () => {
                 type="radio"
                 value="newsletters"
                 className={clsx({ 'input-error': errors.preference })}
-                {...register('preference',{ required: 'Please select one option' })}
+                {...register('preference')}
             />
-
             Search Engine (Yandex, Google, Bing)
             </label>
 
@@ -97,7 +85,7 @@ export const ProfileForm: React.FC = () => {
                 type="radio"
                 value="updates"
                 className={clsx({ 'input-error': errors.preference })}
-                {...register('preference',{ required: 'Please select one option' })}
+                {...register('preference')}
             />
             Social Media
             </label>
@@ -107,7 +95,7 @@ export const ProfileForm: React.FC = () => {
                 type="radio"
                 value="offers"
                 className={clsx({ 'input-error': errors.preference })}
-                {...register('preference',{ required: 'Please select one option' })}
+                {...register('preference')}
             />
             Friend or Colleague
             </label>

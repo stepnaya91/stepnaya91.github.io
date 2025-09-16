@@ -1,15 +1,28 @@
 import clsx from "clsx"
 import React from "react"
 import { useForm } from 'react-hook-form';
-import { categories as Categories, Product } from "../../ProductCreator";
+import { categories as Categories } from "../../ProductCreator";
 import "./ProductAdd.scss";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const formSchema = z
+  .object({
+        name: z.string().min(1, "Введите название товара"),
+        price: z.number('Укажите цену').min(1,'Введите цену').max(5000, 'Не более 5000'),
+        categoryName: z.string().min(1,'Необходимо выбрать категорию'),
+        image: z.instanceof(FileList).refine((files) => ['image/jpeg', 'image/png'].includes(files?.[0]?.type), 'Не верный тип файла. Только JPEG и PNG').optional(),
+        description: z.string().optional()
+    })
+
+type Product = z.infer<typeof formSchema>;
 
 export const ProductAdd: React.FC = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<Product>();
+    } = useForm({ resolver: zodResolver(formSchema) });
 
     const onSubmit = (data: Product) => {
         console.log('Product Add: ', data);
@@ -25,9 +38,7 @@ export const ProductAdd: React.FC = () => {
                 type="text"
                 placeholder="Введите название товара"
                 className={clsx({ 'input-error': errors.name })}
-                {...register('name',{
-                    required: 'Необходимо ввести название'
-                })}            
+                {...register('name')}            
             />
             {errors.name && <p className="error">{errors.name.message}</p>}
 
@@ -37,27 +48,14 @@ export const ProductAdd: React.FC = () => {
                 type="number"
                 placeholder="Введите цену товара"
                 className={clsx({ 'input-error': errors.price })}
-                {...register('price',{
-                    required: 'Необходимо ввести цену',
-                    minLength: {
-                        value: 0,
-                        message: "Минимальная величина 0"
-                    },
-                    maxLength: {
-                        value: 5000,
-                        message: "Максимальная величина 5000"
-                    }
-                })}            
+                {...register('price',{ valueAsNumber: true })}            
             />
             {errors.price && <p className="error">{errors.price.message}</p>}
 
             <label htmlFor="categoryName">Категория: </label>
             <select 
                 id="categoryName"
-                {...register("categoryName",{
-                    required: "Необходимо выбрать категорию товара"
-                })}
-            >
+                {...register("categoryName")}            >
                 <option value="">Выберите категорию..</option>
                 {categories.map((category)=>(<option key={category} value={category}>{category}</option>))}
             </select>
@@ -67,20 +65,7 @@ export const ProductAdd: React.FC = () => {
             <input 
                 type="file"
                 id="image"
-                {... register("image",{
-                    validate: {
-                        fileType: (value) => {
-                            if(value.length>0){
-                                const acceptedTypes = ['image/jpeg', 'image/png'];
-                                const file = value[0];
-                                if(file&&!acceptedTypes.includes(file.type)){
-                                        return 'Unsupported file type. Only JPEG and PNG are allowed.';
-                                    }
-                            }
-                                return true;
-                        },
-                    },
-                })}                          
+                {... register("image")}                          
             />
             {errors.image && <p className="error">{errors.image.message}</p>}
 

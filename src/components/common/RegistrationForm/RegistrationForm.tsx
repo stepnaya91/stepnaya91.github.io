@@ -2,17 +2,31 @@ import React, { useState } from "react";
 import clsx from "clsx"
 import { useForm } from "react-hook-form";
 import "./RegistrationForm.scss";
+import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
 
-type User = {
-  login: string;
-  password: string; 
-  confirmPassword: string; 
-  email: string;
-  firstName: string;
-  lastName: string;
-  middleName?: string;
-  birthDate: Date
-};
+
+const formSchema = z.object({
+        login: z.string().min(1, 'Укажите логин'),
+        password: z.string()
+            .min(1,'Укажите пароль')
+            .regex(
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 
+                "Пароль не менее 8 символов, должен содержать буквы в верхнем и нижнем регистре, цифры и специальные символы: @$!%*?&"), 
+        confirmPassword: z.string().min(1, 'Подтвердите пароль'),
+        email: z.email('Неправильный формат почты'),        
+        firstName: z.string()
+            .min(1, 'Укажите имя'),        
+        lastName: z.string()
+            .min(1, 'Укажите фамилию'), 
+        birthDate: z.preprocess(
+            (val) => val ? new Date(String(val)) : undefined,
+            z.date('Укажите дату')
+        ),
+        middleName: z.string().optional(),
+    }).refine((data)=>{return data.password===data.confirmPassword}, {message: 'Пароли не совпадают', path:['confirmPassword']})
+
+type User = z.infer<typeof formSchema>;
 
 export const RegistrationForm: React.FC = () => {
     const [registration, setRegistration] = useState<boolean>(false);
@@ -22,9 +36,10 @@ export const RegistrationForm: React.FC = () => {
         unregister,
         reset,
         handleSubmit,
-        watch,
         formState: { errors },
-    } = useForm<User>(); 
+    } = useForm({ 
+        resolver: zodResolver(formSchema) 
+    }); 
     
     const onSubmit = (data: User) => {
         console.log('User Data: ', data);
@@ -51,9 +66,7 @@ export const RegistrationForm: React.FC = () => {
                 id="login"
                 type="text"
                 className={clsx({ 'input-error': errors.login})}
-                {...register('login',{
-                    required: 'Укажите логин'
-                })}            
+                {...register('login')}            
             />
             {errors.login && <p className="error">{errors.login.message}</p>}
 
@@ -63,17 +76,7 @@ export const RegistrationForm: React.FC = () => {
                 type="password"
                 placeholder= "Пароль должен содержать буквы в верхнем и нижнем регистре, цифры и специальные символы: @$!%*?&"                    
                 className={clsx({ 'input-error': errors.password})}
-                {...register('password',{
-                    required: 'Укажите пароль', 
-                    minLength: { 
-                        value: 8, 
-                        message: "Пароль должен содержать минимум 8 символов" 
-                    },      
-                    pattern: { 
-                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 
-                        message: "Пароль должен содержать буквы в верхнем и нижнем регистре, цифры и специальные символы: @$!%*?&" 
-                    } 
-                })}            
+                {...register('password')}            
             />
             {errors.password && <p className="error">{errors.password.message}</p>}
 
@@ -85,14 +88,7 @@ export const RegistrationForm: React.FC = () => {
                         id="confirmPassword"
                         type="password"
                         className={clsx({ 'input-error': errors.confirmPassword})}
-                        {...register('confirmPassword',{
-                            required: 'Подтвердите пароль',
-                            validate: (val: string) => {
-                                if (watch('password') != val) {
-                                return "Пароль не совпадает";
-                                }
-                            },
-                        })}            
+                        {...register('confirmPassword')}            
                     />
                     {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
 
