@@ -20,8 +20,8 @@ const formSchema = z.object({
         lastName: z.string()
             .min(1, 'Укажите фамилию'), 
         birthDate: z.preprocess(
-            (val) => val ? new Date(String(val)) : undefined,
-            z.date('Укажите дату')
+            (val) => val ? new Date(String(val)) : new Date(),
+            z.date('Укажите дату').min(new Date('1900-01-01'), 'Укажите дату')
         ),
         middleName: z.string().optional(),
     }).refine((data)=>{return data.password===data.confirmPassword}, {message: 'Пароли не совпадают', path:['confirmPassword']})
