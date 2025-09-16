@@ -20,7 +20,7 @@ const formSchema = z.object({
         lastName: z.string()
             .min(1, 'Укажите фамилию'), 
         birthDate: z.preprocess(
-            (val) => val ? new Date(String(val)) : new Date(),
+            (val) => val ? new Date(String(val)) : new Date('1809-01-01'),
             z.date('Укажите дату').min(new Date('1900-01-01'), 'Укажите дату')
         ),
         middleName: z.string().optional(),
