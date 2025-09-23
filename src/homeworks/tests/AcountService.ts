@@ -4,8 +4,8 @@ import { ProductType, ProductTypeName, Product } from "./ProductType";
 export interface dbMethods{
     getAccountTypeFromDB: (name:string) => AccountType;
     getProductTypeFromDB: (name:string) => ProductType;
-    updateProductTypeInDB: (pType:ProductType) => {};
-    updateAccountTypeInDB: (accType:AccountType) => {};
+    updateProductTypeInDB: (pType:ProductType) => void;
+    updateAccountTypeInDB: (accType:AccountType) => void;
 }
 
 export class AccountService{
