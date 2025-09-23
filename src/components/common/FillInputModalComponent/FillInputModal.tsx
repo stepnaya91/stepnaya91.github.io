@@ -1,4 +1,4 @@
-import "../../../app/App.scss"
+import "../../../app/App.css"
 import React, { useState } from "react"
 import { Modal } from "../Modal/Modal"
 import { Button } from "../Button/Button";

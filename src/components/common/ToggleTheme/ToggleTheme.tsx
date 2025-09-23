@@ -1,6 +1,6 @@
 import React from "react";
 import {useTheme} from "../../ThemeProvider";
-import "../../../app/App.scss";
+import "../../../app/App.css";
 import { useLanguage } from "../../LanguageProvider";
 import { Button } from "../Button/Button";
 

@@ -1,5 +1,5 @@
 import "./BasketButon.scss"
-import "../../../app/App.scss"
+import "../../../app/App.css"
 import React, { memo } from "react"
 import { Button } from "../../common/Button/Button"
 

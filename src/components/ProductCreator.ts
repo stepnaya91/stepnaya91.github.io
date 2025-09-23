@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const categories : string[] = ["fruits", "vegetables", "clothes", "shoes"];
+export const categories : string[] = ["fruits", "vegetables", "clothes", "shoes"];
 const CNT_CATEGORIES = 4;
 
 export type Product = {
@@ -8,7 +8,7 @@ export type Product = {
     name: string,
     price: number,
     categoryName: string,
-    image?: string,
+    image?: FileList,
     description?: string,
 }
 

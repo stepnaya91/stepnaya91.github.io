@@ -23,7 +23,6 @@ const meta: Meta<typeof SliderRange> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {

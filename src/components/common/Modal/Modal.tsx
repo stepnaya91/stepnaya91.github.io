@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react"
 import "./Modal.scss"
-import "../../../app/App.scss"
+import "../../../app/App.css"
 import { createPortal } from "react-dom"
 import { Button } from "../Button/Button";
 
