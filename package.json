@@ -8,6 +8,7 @@
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "test": "jest src",
+    "test-homework": "jest src/homeworks/tests",
     "lint": "eslint src --fix",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
