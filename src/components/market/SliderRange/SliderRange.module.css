@@ -1,0 +1,33 @@
+@import "../../../app/Variables.css";
+
+.root{
+  text-align: right
+}
+.field{
+  position: relative;
+  height: 15px;
+  background-color: #fefefe;
+  border: 1px solid #cecece;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.runner_light,.runner_dark{
+  position: absolute;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.runner_dark{
+  background-color: var(--darkColor);
+
+}
+.runner_light{
+  background-color: var(--yellow);
+
+}
+

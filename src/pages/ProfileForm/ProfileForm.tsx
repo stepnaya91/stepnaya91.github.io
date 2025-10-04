@@ -4,6 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import clsx from 'clsx';
 import React from 'react';
 import { z } from 'zod';
+import './ProfileForm.css'
+import { useTheme } from 'src/components/ThemeProvider';
+import { useLanguage } from 'src/components/LanguageProvider';
 
 
 const formSchema = z
@@ -23,6 +26,9 @@ const formSchema = z
 type FormData = z.infer<typeof formSchema>;
 
 export const ProfileForm: React.FC = () => {
+    const {theme} = useTheme();
+    const {t} = useLanguage();
+
     const {
         register,
         handleSubmit,
@@ -35,7 +41,7 @@ export const ProfileForm: React.FC = () => {
 
 
     return(    
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className={theme} onSubmit={handleSubmit(onSubmit)}>
         <h2>Contact Form</h2>
 
         <label htmlFor="name">Name:</label>
@@ -43,7 +49,7 @@ export const ProfileForm: React.FC = () => {
             id = "name"
             type="text"
             placeholder="Enter your name"
-            className={clsx({ 'input-error': errors.name })}
+            className={clsx({ 'input-error': errors.name }, theme)}
             {...register('name')}
         />
         {errors.name && <p className="error">{errors.name.message}</p>}
@@ -52,7 +58,7 @@ export const ProfileForm: React.FC = () => {
         <input
             type="email"
             id="email"
-            className={clsx({ 'input-error': errors.email })}
+            className={clsx({ 'input-error': errors.email}, theme)}
             placeholder="Enter your email"
             {...register('email')}
         />
@@ -61,20 +67,20 @@ export const ProfileForm: React.FC = () => {
         <label htmlFor="message">Message:</label>
         <textarea
             id="message"
-            className={clsx({ 'input-error': errors.message })}
+            className={clsx({ 'input-error': errors.message}, theme )}
             placeholder="Enter your message"
             {...register('message')}
         />
         {errors.message && <p className="error">{errors.message.message}</p>}
 
-        <fieldset>
+        <fieldset className={"fieldset-"+theme}>
             <legend>How did you hear about us?</legend>
 
             <label>
             <input
                 type="radio"
                 value="newsletters"
-                className={clsx({ 'input-error': errors.preference })}
+                className={clsx({ 'input-error': errors.preference}, theme )}
                 {...register('preference')}
             />
             Search Engine (Yandex, Google, Bing)
@@ -84,7 +90,7 @@ export const ProfileForm: React.FC = () => {
             <input
                 type="radio"
                 value="updates"
-                className={clsx({ 'input-error': errors.preference })}
+                className={clsx({ 'input-error': errors.preference}, theme )}
                 {...register('preference')}
             />
             Social Media
@@ -94,7 +100,7 @@ export const ProfileForm: React.FC = () => {
             <input
                 type="radio"
                 value="offers"
-                className={clsx({ 'input-error': errors.preference })}
+                className={clsx({ 'input-error': errors.preference}, theme )}
                 {...register('preference')}
             />
             Friend or Colleague
@@ -103,7 +109,7 @@ export const ProfileForm: React.FC = () => {
             {errors.preference && <p className="error">{errors.preference.message}</p>}
         </fieldset>
 
-        <button type="submit">Submit</button>
+        <button type="submit" className={theme}>{t('confirm')}</button>
         </form>
     )
 }

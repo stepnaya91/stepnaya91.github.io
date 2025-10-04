@@ -1,19 +1,20 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import { Header } from "../HeaderComponent/Header"
-import "./Layout.scss"
+import "./Layout.css"
 import { useTheme } from "../../ThemeProvider";
-import { useLanguage } from "../../LanguageProvider";
 
+interface LayoutProps {
+    children: ReactNode
+}
 
-export const Layout: React.FC = () => {
+export const Layout: React.FC <LayoutProps> = ({children}) => {
     const {theme} = useTheme();
-    const {t} = useLanguage();
     const className="layout-div-"+theme;    
     return (
         <>
             <div className={className}>
                 <Header/>
-                <h2>{t('welcome')}</h2>
+                {children}
             </div>
         </>
     )

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import { getObserver } from "./IntersectionObserver";
-import "./LazyLoad.scss"
+import "./LazyLoad.css"
 
 interface LazyLoadProps{
     changeObject: number,

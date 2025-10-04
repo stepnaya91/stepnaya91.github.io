@@ -1,4 +1,5 @@
 import React from "react"
+import { useTheme } from "src/components/ThemeProvider";
 
 interface ButtonProps{
     label:string,
@@ -7,7 +8,9 @@ interface ButtonProps{
 }
 
 export const Button: React.FC<ButtonProps> = ({label, ...props}:ButtonProps) => {
+    const {theme} = useTheme();
+    const className = "button-"+theme;
     return (
-        <button type="button" {...props}>{label}</button>
+        <button type="button" className={className} {...props}>{label}</button>
     )
 }

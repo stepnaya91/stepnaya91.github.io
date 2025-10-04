@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react';
 import { ProductListAddButton } from './ProductListAddButton';
-import { Product } from "../../ProductType"
-import { getRandomProductList } from '../../ProductCreator';
+import { Product } from "../../components/ProductType"
+import { getRandomProductList } from '../../components/ProductCreator';
 
 const meta: Meta<typeof ProductListAddButton> = {
     title: "market/ProductListAddButton",
