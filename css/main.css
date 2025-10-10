@@ -29,6 +29,7 @@ button{
     font-size: 12px;
     padding: 10px 16px;
     margin-bottom: 5px;
+    width:100%;
 }
 .button-light{
     border: 0.01em solid black;
@@ -49,6 +50,7 @@ button{
     line-height: 1;
     font-size: 12px;
     padding: 9px 20px;
+    width:100%;
 
 }
 
@@ -172,21 +174,12 @@ button{
     height:100em;
     background-color: var(--brown);
 }
-.light{
-  background: var(--lightYellow);
-}
-.dark{
-  background: var(--brown);
-}
-.dark::placeholder{
-  color: black
-}
-
 form {
   display: flex;
   flex-direction: column;
   padding: 40px 40px 60px 40px;
   border-radius: 20px;
+  background: #fff;
   color: #1a1a1a;
   gap: 4px;
   text-align: left;
@@ -196,7 +189,7 @@ form {
   }
 
   & > input,
-  textarea {
+  textarea, select {
     min-width: 260px;
     padding: 6px 0 6px 10px;
   }
@@ -209,10 +202,6 @@ form {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-  }
-
-  .fieldset-dark{
-    border-color: var(--grey);
   }
 
   .input-error,
@@ -353,51 +342,6 @@ form {
     transform: translateY(0);
   }
 }
-form {
-  display: flex;
-  flex-direction: column;
-  padding: 40px 40px 60px 40px;
-  border-radius: 20px;
-  background: #fff;
-  color: #1a1a1a;
-  gap: 4px;
-  text-align: left;
-
-  h2 {
-    margin: 0 0 10px 0;
-  }
-
-  & > input,
-  textarea, select {
-    min-width: 260px;
-    padding: 6px 0 6px 10px;
-  }
-
-  button {
-    margin-top: 24px;
-  }
-
-  fieldset {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-  }
-
-  .input-error,
-  fieldset:has(input.input-error) {
-    border-color: #ff0202;
-  }
-
-  .error {
-    margin: -4px 0 0 0;
-    font-size: 14px;
-    color: #bd0000;
-  }
-
-  fieldset:has(p.error) p {
-    margin-top: 4px;
-  }
-}
 .productBasket-div-light,.productBasket-div-dark{
     width: 200px;
     padding: 16px;
@@ -422,7 +366,7 @@ form {
     justify-content: flex-end;
 }
 .delete-button-dark,.delete-button-light{
-    width:91.9px;
+    width:100%;
     color:rgb(145, 6, 6);
 }
 .delete-button-dark{
@@ -445,7 +389,7 @@ form {
     justify-content: space-around;
 }
 .show-div-button,.add-div-button{
-    top: 100px;;
+    top: 100px;
     position:sticky;
     padding-top: 10px;
     height: 12px;
@@ -501,6 +445,64 @@ form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+}
+.light{
+  background: var(--lightYellow);
+}
+.dark{
+  background: var(--brown);
+}
+.dark::placeholder{
+  color: black
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 40px 60px 40px;
+  border-radius: 20px;
+  color: #1a1a1a;
+  gap: 4px;
+  text-align: left;
+
+  h2 {
+    margin: 0 0 10px 0;
+  }
+
+  & > input,
+  textarea {
+    min-width: 260px;
+    padding: 6px 0 6px 10px;
+  }
+
+  button {
+    margin-top: 24px;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .fieldset-dark{
+    border-color: var(--grey);
+  }
+
+  .input-error,
+  fieldset:has(input.input-error) {
+    border-color: #ff0202;
+  }
+
+  .error {
+    margin: -4px 0 0 0;
+    font-size: 14px;
+    color: #bd0000;
+  }
+
+  fieldset:has(p.error) p {
+    margin-top: 4px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map*/
