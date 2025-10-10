@@ -29,6 +29,7 @@ button{
     font-size: 12px;
     padding: 10px 16px;
     margin-bottom: 5px;
+    width:100%;
 }
 .button-light{
     border: 0.01em solid black;
@@ -49,6 +50,7 @@ button{
     line-height: 1;
     font-size: 12px;
     padding: 9px 20px;
+    width:100%;
 
 }
 

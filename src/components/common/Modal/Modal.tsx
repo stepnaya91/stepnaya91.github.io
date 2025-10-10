@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react"
+import React, { ReactNode } from "react"
 import "./Modal.css"
 import "../../../app/App.css"
 import { createPortal } from "react-dom"

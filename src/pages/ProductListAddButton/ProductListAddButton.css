@@ -4,7 +4,7 @@
     justify-content: space-around;
 }
 .show-div-button,.add-div-button{
-    top: 100px;;
+    top: 100px;
     position:sticky;
     padding-top: 10px;
     height: 12px;
