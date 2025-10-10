@@ -18,11 +18,11 @@ export function RouteComponent(){
                 <Route path="/ProfileForm" element={<ProfileForm/>}></Route>
                 <Route path="/ProductList" element={<ProductListAddButton products={ getRandomProductList()}/>}/>
                 <Route path="/Basket" element={<ProductListInBasket products={ getRandomProductList()}/>}></Route>
-                 <Route path="/EditProduct" element={<Modal children={<ProductAdd/>}/>} />  
+                 <Route path="/EditProduct" element={<Modal><ProductAdd/></Modal>} />  
             </Routes>   
             {background && (
                 <Routes>
-                    <Route path="/EditProduct" element={<Modal children={<ProductAdd/>}/>} /> 
+                    <Route path="/EditProduct" element={<Modal><ProductAdd/></Modal>} /> 
                 </Routes>
             )}        
         </>
