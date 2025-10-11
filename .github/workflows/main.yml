@@ -3,7 +3,7 @@ name: Test, Lint, Build and Deploy on Github Pages
 on:
   push:
     branches: 
-      - storybook
+      - main
 
   # Позволяет запустить этот рабочий процесс вручную на вкладке Actions
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
 
     strategy:
       matrix:
