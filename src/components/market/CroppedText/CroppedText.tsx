@@ -1,7 +1,7 @@
 import React, { FC, useLayoutEffect, useRef, useState } from 'react';
 import cn from 'clsx';
 import { useEvent } from '../../../hooks/useEvent'
-import s from './CroppedText.module.sass';
+import s from './CroppedText.module.sass'
 
 export type CroppedTextProps = {
   className?: string;

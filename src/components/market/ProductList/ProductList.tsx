@@ -1,7 +1,7 @@
 import React, { memo, useMemo } from "react"
 import { Product } from "../../ProductCreator"
 import { ProductBasket } from "../ProductBasketComponent/ProductBasket"
-import "./ProductList.scss"
+import "./ProductList.css"
 
 export interface ProductListProps {
     products: Product[]

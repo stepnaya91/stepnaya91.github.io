@@ -1,9 +1,10 @@
 .add-div{
+    position:relative;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
-.add-div-button{
-    top:0;
+.show-div-button,.add-div-button{
+    top: 100px;
     position:sticky;
     padding-top: 10px;
     height: 12px;
@@ -11,7 +12,7 @@
 }
 .range-div{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .range-slider{

@@ -7,14 +7,28 @@ const resources = {
     translation: {
         "theme":"Theme",
         "changeTheme":"Change theme",
-        "welcome": "Welcome to my app!"
+        "welcome": "Welcome to my app!",
+        "deleteButtonName": "Delete",
+        "basketButtonName": "To Basket",
+        "confirm": "Confirm",
+        "home": "Home",
+        "addToCart": "Cart",
+        "profile": "Profile",
+        "catalog": "Catalog"
     }
   },
   ru: {
     translation: {
         "theme":"Тема",
         "changeTheme":"Поменять тему",
-        "welcome": "Добро пожаловать в моё приложение!"
+        "welcome": "Добро пожаловать в моё приложение!",
+        "deleteButtonName": "Удалить",
+        "basketButtonName": "В корзину",
+        "confirm": "Подтвердить",
+        "home": "Домой",
+        "addToCart": "Корзина",
+        "profile": "Профиль",
+        "catalog": "Каталог"
     }
   }
 };

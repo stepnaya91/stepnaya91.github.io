@@ -2,9 +2,11 @@ import clsx from "clsx"
 import React from "react"
 import { useForm } from 'react-hook-form';
 import { categories as Categories } from "../../ProductCreator";
-import "./ProductAdd.scss";
+import "./ProductAdd.css";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Product } from "src/components/ProductType";
+import { useTheme } from "src/components/ThemeProvider";
 
 const formSchema = z
   .object({
@@ -15,18 +17,21 @@ const formSchema = z
         description: z.string().optional()
     })
 
-type Product = z.infer<typeof formSchema>;
 
-export const ProductAdd: React.FC = () => {
+type ProductSchema = z.infer<typeof formSchema>;
+
+export const ProductAdd: React.FC<Partial<Product>> = ({name,price,categoryName,image,description}) => {
+    const {theme} = useTheme();
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm({ resolver: zodResolver(formSchema) });
 
-    const onSubmit = (data: Product) => {
+    const onSubmit = (data: ProductSchema) => {
         console.log('Product Add: ', data);
     }
+
 
     const categories = Categories;
     return (
@@ -34,6 +39,7 @@ export const ProductAdd: React.FC = () => {
             <h2>Добавление товара</h2>
             <label htmlFor="name">Название: </label>
             <input
+                value={name?name:undefined}
                 id="name"
                 type="text"
                 placeholder="Введите название товара"
@@ -44,6 +50,7 @@ export const ProductAdd: React.FC = () => {
 
             <label htmlFor="price">Цена: </label>
             <input
+                value={price?price:undefined}
                 id="price"
                 type="number"
                 placeholder="Введите цену товара"
@@ -54,6 +61,7 @@ export const ProductAdd: React.FC = () => {
 
             <label htmlFor="categoryName">Категория: </label>
             <select 
+                value={categoryName?categoryName:undefined}
                 id="categoryName"
                 {...register("categoryName")}            >
                 <option value="">Выберите категорию..</option>
@@ -63,6 +71,7 @@ export const ProductAdd: React.FC = () => {
 
             <label htmlFor="image">Загрузите изображение товара: </label>
             <input 
+                value={image?image:undefined}
                 type="file"
                 id="image"
                 {... register("image")}                          
@@ -71,11 +80,12 @@ export const ProductAdd: React.FC = () => {
 
             <label htmlFor="description">Описание: </label>
             <textarea
+                value={description?description:undefined}
                 id="description"
                 {... register("description")}
             />
 
-            <button type="submit">Добавить товар</button>
+            <button className={"button-"+theme} type="submit">Добавить товар</button>
         </form>
     )
 }

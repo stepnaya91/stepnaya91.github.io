@@ -2,7 +2,8 @@ import React, { FC, useMemo } from 'react';
 import cn from 'clsx';
 import { SliderRangeInput } from './SliderRangeInput';
 import { getValueByCursor, getValueInRange } from './helpers';
-import s from './SliderRange.module.sass';
+import s from './SliderRange.module.css';
+import { useTheme } from 'src/components/ThemeProvider';
 
 export type SliderRangeProps = {
   className?: string;
@@ -14,6 +15,7 @@ export type SliderRangeProps = {
 };
 
 export const SliderRange: FC<SliderRangeProps> = ({ className, value, onChange, min, max, label }) => {
+  const {theme} = useTheme();
   const range = max - min;
 
   const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -57,7 +59,7 @@ export const SliderRange: FC<SliderRangeProps> = ({ className, value, onChange, 
   return (
     <div className={cn(s.root, className)}>
       <div onMouseDown={onStart} onTouchStart={onStart} className={s.field} onClick={onClick}>
-        <div className={s.runner} style={{ left: ((_value - min) / range) * 100 + '%' }}></div>
+        <div className={theme=="dark"?s.runner_dark:s.runner_light} style={{ left: ((_value - min) / range) * 100 + '%' }}></div>
       </div>
       {label && <label htmlFor='sliderInput'>{label}</label>}
       <SliderRangeInput value={value} onChange={onChange} min={min} max={max} />
