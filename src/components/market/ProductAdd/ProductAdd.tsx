@@ -7,20 +7,23 @@ import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Product } from "src/components/ProductType";
 import { useTheme } from "src/components/ThemeProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { productsActions, productsSelectors } from "../../../../store/slices/products";
+import { v4 as uuidv4 } from 'uuid';
+import { useNavigate, useParams } from "react-router-dom";
 
 const formSchema = z
   .object({
         name: z.string().min(1, "Введите название товара"),
         price: z.number('Укажите цену').min(1,'Введите цену').max(5000, 'Не более 5000'),
         categoryName: z.string().min(1,'Необходимо выбрать категорию'),
-        image: z.instanceof(FileList).refine((files) => ['image/jpeg', 'image/png'].includes(files?.[0]?.type), 'Не верный тип файла. Только JPEG и PNG').optional(),
         description: z.string().optional()
     })
 
 
 type ProductSchema = z.infer<typeof formSchema>;
 
-export const ProductAdd: React.FC<Partial<Product>> = ({name,price,categoryName,image,description}) => {
+export const ProductAdd: React.FC = () => {
     const {theme} = useTheme();
     const {
         register,
@@ -28,18 +31,52 @@ export const ProductAdd: React.FC<Partial<Product>> = ({name,price,categoryName,
         formState: { errors },
     } = useForm({ resolver: zodResolver(formSchema) });
 
+    const dispatch = useDispatch();
+    const addItem = (product: Product) => {
+        dispatch(productsActions.add({product: product}));
+    };
+    const updateItem = (product: Product) => {
+        dispatch(productsActions.update({product:product}));
+    }
+    
+    const navigate = useNavigate();
+
+    const {productId} = useParams();
     const onSubmit = (data: ProductSchema) => {
         console.log('Product Add: ', data);
+        
+        const product: Product = {
+            id:productId?productId:uuidv4(),
+            categoryName:data.categoryName,
+            name:data.name,
+            price:data.price,
+            description:data.description?data.description:undefined
+        }
+
+        if(productId){
+            updateItem(product);
+        }
+        else{
+            addItem(product);
+        }   
+        navigate(-1); // Возвращает на предыдущую страницу            
     }
 
-
     const categories = Categories;
+
+    const product = useSelector(productsSelectors.getProduct(productId));
+    const name = product?product.name:undefined;
+    const price = product?product.price:undefined;
+    const categoryName = product?product.categoryName:undefined;
+    const image = product?product.image:undefined;
+    const description = product?product.description:undefined;
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <h2>Добавление товара</h2>
+            <h2>Добавление/изменение товара</h2>
             <label htmlFor="name">Название: </label>
             <input
-                value={name?name:undefined}
+                defaultValue={name?name:undefined}
                 id="name"
                 type="text"
                 placeholder="Введите название товара"
@@ -50,7 +87,7 @@ export const ProductAdd: React.FC<Partial<Product>> = ({name,price,categoryName,
 
             <label htmlFor="price">Цена: </label>
             <input
-                value={price?price:undefined}
+                defaultValue={price?price:undefined}
                 id="price"
                 type="number"
                 placeholder="Введите цену товара"
@@ -61,7 +98,7 @@ export const ProductAdd: React.FC<Partial<Product>> = ({name,price,categoryName,
 
             <label htmlFor="categoryName">Категория: </label>
             <select 
-                value={categoryName?categoryName:undefined}
+                defaultValue={categoryName?categoryName:undefined}
                 id="categoryName"
                 {...register("categoryName")}            >
                 <option value="">Выберите категорию..</option>
@@ -69,23 +106,15 @@ export const ProductAdd: React.FC<Partial<Product>> = ({name,price,categoryName,
             </select>
             {errors.categoryName && <p className="error">{errors.categoryName.message}</p>}
 
-            <label htmlFor="image">Загрузите изображение товара: </label>
-            <input 
-                value={image?image:undefined}
-                type="file"
-                id="image"
-                {... register("image")}                          
-            />
-            {errors.image && <p className="error">{errors.image.message}</p>}
-
             <label htmlFor="description">Описание: </label>
             <textarea
-                value={description?description:undefined}
+                defaultValue={description?description:undefined}
                 id="description"
                 {... register("description")}
             />
 
-            <button className={"button-"+theme} type="submit">Добавить товар</button>
+            <button className={"button-"+theme} type="submit" >Добавить товар</button>
         </form>
     )
 }
+

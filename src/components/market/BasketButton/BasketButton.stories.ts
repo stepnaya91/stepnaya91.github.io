@@ -3,22 +3,11 @@ import { BasketButton } from './BasketButton';
 
 const meta: Meta<typeof BasketButton> = {
     title: "market/BasketButton",
-    component: BasketButton,
-    args: {
-        counter: 0
-    }
+    component: BasketButton
 }
 
 export default meta;
 
-export const Primary = {
-    args:{
-        counter: 0
-    } 
-}
+export const Primary = {}
 
-export const WithCounter = {
-    args:{
-        counter: 5
-    }
-}
+export const WithCounter = {}

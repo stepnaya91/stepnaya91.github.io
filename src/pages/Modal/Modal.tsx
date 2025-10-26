@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
+import "src/components/common/Modal/Modal.css"
 
 interface ModalProps{
     children: ReactNode

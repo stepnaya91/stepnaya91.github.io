@@ -7,6 +7,8 @@ import { z } from 'zod';
 import './ProfileForm.css'
 import { useTheme } from 'src/components/ThemeProvider';
 import { useLanguage } from 'src/components/LanguageProvider';
+import { useSelector } from 'react-redux';
+import { profileSelectors } from '../../../store/slices/profile';
 
 
 const formSchema = z
@@ -39,6 +41,7 @@ export const ProfileForm: React.FC = () => {
         console.log('Form submitted:', data);
     };
 
+    const profile = useSelector(profileSelectors.get);
 
     return(    
         <form className={theme} onSubmit={handleSubmit(onSubmit)}>
@@ -48,6 +51,7 @@ export const ProfileForm: React.FC = () => {
         <input
             id = "name"
             type="text"
+            value={profile.name}
             placeholder="Enter your name"
             className={clsx({ 'input-error': errors.name }, theme)}
             {...register('name')}
@@ -57,6 +61,7 @@ export const ProfileForm: React.FC = () => {
         <label htmlFor="email">Email:</label>
         <input
             type="email"
+            value={profile.email}
             id="email"
             className={clsx({ 'input-error': errors.email}, theme)}
             placeholder="Enter your email"
@@ -67,6 +72,7 @@ export const ProfileForm: React.FC = () => {
         <label htmlFor="message">Message:</label>
         <textarea
             id="message"
+            value={profile.message}
             className={clsx({ 'input-error': errors.message}, theme )}
             placeholder="Enter your message"
             {...register('message')}
@@ -80,6 +86,7 @@ export const ProfileForm: React.FC = () => {
             <input
                 type="radio"
                 value="newsletters"
+                checked={profile.preference=="newsletters"}
                 className={clsx({ 'input-error': errors.preference}, theme )}
                 {...register('preference')}
             />
@@ -90,6 +97,7 @@ export const ProfileForm: React.FC = () => {
             <input
                 type="radio"
                 value="updates"
+                checked={profile.preference=="updates"}
                 className={clsx({ 'input-error': errors.preference}, theme )}
                 {...register('preference')}
             />
@@ -100,6 +108,7 @@ export const ProfileForm: React.FC = () => {
             <input
                 type="radio"
                 value="offers"
+                checked={profile.preference=="offers"}
                 className={clsx({ 'input-error': errors.preference}, theme )}
                 {...register('preference')}
             />
