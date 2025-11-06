@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSigninMutation, useSignupMutation } from "../../../../store/services/api";
 import { useDispatch } from "react-redux";
 import { tokenActions } from "../../../../store/slices/token";
+import { NavLink } from "react-router-dom";
 
 
 interface LoginFormProps{
@@ -64,8 +65,12 @@ export const LoginForm: React.FC<LoginFormProps> = ({onClick}:LoginFormProps) =>
     }
 
     return (
-        <>
+        <>        
+            <NavLink to="/AuthComponent">
+                    На форму входа с использованием функционального компонента
+            </NavLink>ы
             <form onSubmit={handleSubmit(onSubmit)}>
+
                 <h2>{registration?"Регистрация":"Вход"} с использованием RTK</h2>
 
                 <label htmlFor="email">Почта: </label>

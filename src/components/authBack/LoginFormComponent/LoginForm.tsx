@@ -8,6 +8,7 @@ import {URL} from '../../../constants';
 import { useDispatch } from "react-redux";
 import { tokenActions } from "../../../../store/slices/token";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 
 interface LoginFormProps{
@@ -68,6 +69,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({onClick}:LoginFormProps) =>
 
     return (
         <>
+            <NavLink to="/Auth">
+                    На форму входа с использованием RTK
+            </NavLink>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>{registration?"Регистрация":"Вход"} в функциональном компоненте</h2>
 
