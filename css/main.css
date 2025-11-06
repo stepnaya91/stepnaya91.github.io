@@ -504,6 +504,6 @@ form {
     margin-top: 4px;
   }
 }
-form{display:flex;flex-direction:column;padding:40px 40px 60px 40px;border-radius:20px;background:#fff;color:#1a1a1a;gap:4px;text-align:left}form a{text-decoration:underline}form a:hover{color:gray}form h2{margin:0 0 10px 0}form>input,form textarea,form select{min-width:260px;padding:6px 0 6px 10px}form button{margin-top:24px}form fieldset{display:flex;flex-direction:column;margin-top:10px}form .auth_input-error-j86tW,form fieldset:has(input.auth_input-error-j86tW){border-color:#ff0202}form .auth_error-ktzy7{margin:-4px 0 0 0;font-size:14px;color:#bd0000}form fieldset:has(p.auth_error-ktzy7) p{margin-top:4px}
+form{display:flex;flex-direction:column;padding:40px 40px 60px 40px;border-radius:20px;background:#fff;color:#1a1a1a;gap:4px;text-align:left}form a{text-decoration:underline}form a:hover{color:gray}form h2{margin:0 0 10px 0}form>input,form textarea,form select{min-width:260px;padding:6px 0 6px 10px}form button{margin-top:24px}form fieldset{display:flex;flex-direction:column;margin-top:10px}form .auth_input-error-R3rrL,form fieldset:has(input.auth_input-error-R3rrL){border-color:#ff0202}form .auth_error-pN11X{margin:-4px 0 0 0;font-size:14px;color:#bd0000}form fieldset:has(p.auth_error-pN11X) p{margin-top:4px}
 
 /*# sourceMappingURL=main.css.map*/
