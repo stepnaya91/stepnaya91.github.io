@@ -1,17 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useSelector } from 'react-redux';
+import { initSelectors } from '../../store/slices/init';
 
 function App() {
+  const init = useSelector(initSelectors.get);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Текст писать тут
-        </p>
-      </header>
-    </div>
+    <>
+      <p>{init?'Приложение запущено':''}</p>
+    </>
   );
 }
 

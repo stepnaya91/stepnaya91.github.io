@@ -14,5 +14,9 @@ const config = {
   docs: {
     autodocs: "tag",
   },
+  webpack: (config, options) => {
+    options.cache.set = () => Promise.resolve(); 
+    return config;
+  }
 };
 export default config;

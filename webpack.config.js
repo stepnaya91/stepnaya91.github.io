@@ -80,6 +80,17 @@ module.exports = (_, args) => {
                 },
               },
             },
+            {
+              loader: 'sass-loader',
+              options: {
+                sassOptions: {
+                  // Silence specific deprecation warnings
+                  silenceDeprecations: ['legacy-js-api', 'mixed-decls'], 
+                  // Or silence all deprecation warnings from dependencies
+                  quietDeps: true, 
+                },
+              },              
+            },
             'sass-loader',
           ],
         },
