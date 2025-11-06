@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { Product } from "../../ProductCreator"
 import { getRandomProduct } from "../../ProductCreator"
 import { LazyLoad } from "../LazyLoad/LazyLoad"
 import { ProductList } from "../ProductList/ProductList"
+import { Product } from "../../../../src/components/ProductType"
 
 interface ProductProps{
     products: Product[]

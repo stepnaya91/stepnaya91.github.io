@@ -1,0 +1,105 @@
+import React, { useState } from "react";
+import clsx from "clsx"
+import { useForm } from "react-hook-form";
+import "../auth.scss";
+import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import {URL} from '../../../constants';
+import { useDispatch } from "react-redux";
+import { tokenActions } from "../../../../store/slices/token";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+
+
+interface LoginFormProps{
+    onClick?: () => void;
+}
+
+const formSchema = z.object({
+        email: z.string(),  
+        password: z.string(),
+        commandId: z.string().default("stepnayaID1")
+    })
+
+type User = z.infer<typeof formSchema>;
+
+
+export const LoginForm: React.FC<LoginFormProps> = ({onClick}:LoginFormProps) => {
+    const [registration, setRegistration] = useState<boolean>(false);
+    const {
+        register,
+        reset,
+        handleSubmit,
+        setError,
+        formState: { errors }
+    } = useForm({ 
+        resolver: zodResolver(formSchema) 
+    }); 
+
+    const dispatch = useDispatch();
+
+    const onSubmit = async (user: User) => {    
+        try{
+            console.log('User Data: ', user);
+            const url = `${URL}/${registration?'signup':'signin'}`;
+            const response = await axios.post(url, {
+                email: user.email,
+                password: user.password,
+                commandId: user.commandId
+            }); 
+            reset();
+            dispatch(tokenActions.set(response.data.token));
+            onClick();
+        }catch(e){
+            console.log('Error: ', e);
+            if (e && 'data' in e.response && e.response.data?.errors) {
+                Object.entries(e.response.data.errors).forEach(([field,message]) => {
+                    setError('root', message);
+                });
+            } else {                
+                console.log('Error: ', e);
+                setError('root', {type: "commonErr", message: "Непредвиденная ошибка"});
+            }            
+        }        
+    }
+
+    const showFields = () => {
+        setRegistration(!registration);
+    }
+
+    return (
+        <>
+            <NavLink to="/Auth">
+                    На форму входа с использованием RTK
+            </NavLink>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <h2>{registration?"Регистрация":"Вход"} в функциональном компоненте</h2>
+
+                <label htmlFor="email">Почта: </label>
+                <input 
+                    id="email"
+                    type="text"
+                    className={clsx({ 'input-error': errors.email})}
+                    {...register('email',{
+                        required: 'Укажите почту'
+                    })}
+                />         
+                {errors.email && <p className="error">{errors.email.message}</p>}
+
+                <label htmlFor="password">Пароль: </label>
+                <input 
+                    id="password"
+                    type="password"
+                    className={clsx({ 'input-error': errors.password})}
+                    {...register('password')}            
+                />
+                {errors.password && <p className="error">{errors.password.message}</p>}
+                <button type="submit">{registration?"Зарегистрироваться":"Войти"}</button>
+
+                
+                {errors.root && <p className="error">Ошибка: {errors.root.message}</p>}
+            </form>
+            <a id="registration" onClick={showFields}>Нажмите, чтобы перейти на форму {registration?"входа":"регистрации"}</a>
+        </>
+    )
+}

@@ -1,16 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
+import { Product } from './ProductType';
 
 export const categories : string[] = ["fruits", "vegetables", "clothes", "shoes"];
 const CNT_CATEGORIES = 4;
 
-export type Product = {
-    id: string,
-    name: string,
-    price: number,
-    categoryName: string,
-    image?: FileList,
-    description?: string,
-}
 
 export const getRandomInt = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min)) + min;
