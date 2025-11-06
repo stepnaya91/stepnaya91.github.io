@@ -8,5 +8,6 @@ export function* setToken(): Generator {
 
 export function* tokenSaga() {
   yield takeEvery(tokenActions.gen.type, setToken);
+  yield takeEvery(tokenActions.set.type, setToken);
   yield takeEvery(tokenActions.empty.type, setToken);
 }

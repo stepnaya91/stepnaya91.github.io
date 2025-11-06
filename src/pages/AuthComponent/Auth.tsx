@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { NavigationState } from 'src/navigation/types';
-import { LoginForm } from '../../components/authBack/LoginForm/LoginForm';
+import { LoginForm } from '../../components/authBack/LoginFormComponent/LoginForm';
 import { createPortal } from 'react-dom';
 
 const Auth: React.FC = () => {

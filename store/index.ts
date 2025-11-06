@@ -7,10 +7,12 @@ import { profile } from './slices/profile';
 import { basket } from './slices/basket';
 import { products } from './slices/products';
 import { login } from './slices/login';
+import { api } from './services/api';
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
   reducer: {
+    [api.reducerPath]: api.reducer,
     token,
     profile,
     init,
@@ -18,7 +20,7 @@ export const store = configureStore({
     products,
     login
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware).concat(api.middleware),
 });
 
 sagaMiddleware.run(sagas);
